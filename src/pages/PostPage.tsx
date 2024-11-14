@@ -17,7 +17,7 @@ const PostPage = () => {
       try {
         const postData = await fetchPost(String(id));
         setPost(postData);
-      } catch (error) {
+      } catch (error:any) {
         throw new Error(error);
       } 
     };

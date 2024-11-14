@@ -12,7 +12,7 @@ const PostList = () => {
       try {
         const postsData = await fetchPosts();
         setPosts(postsData.posts);
-      } catch (error) {
+      } catch (error:any) {
         throw new Error(error);
       }
     };
