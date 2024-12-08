@@ -1,6 +1,6 @@
 // src/components/post/PostCard.tsx
 import { Link } from "react-router-dom";
-import { Post } from "../../interfaces"
+import { Post } from "../../types"
 
 const PostCard = (post: Post) => {
   return (

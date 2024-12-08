@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle';
 const Header = () => {
   return (
     <>
-    <header className=" text-white py-4 px-8 border-b-2">
+    <header className=" text-white  py-3 lg:py-4 lg:px-8 border-b-2">
       <div className="container">
         <nav className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-semibold">React Blog</Link>

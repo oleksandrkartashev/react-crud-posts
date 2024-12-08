@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Post, PostResponse } from "../interfaces"
+import {Post, PostResponse } from "../types"
 
 export const fetchPosts = async (): Promise<PostResponse> => {
   try {

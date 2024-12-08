@@ -11,3 +11,5 @@ export interface Post {
 export interface PostResponse {
   posts: Post[];
 }
+
+export type Theme = 'light' | 'dark';

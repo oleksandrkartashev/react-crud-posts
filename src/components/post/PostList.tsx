@@ -1,23 +1,8 @@
-// src/components/post/PostList.tsx
-import { useEffect, useState } from 'react';
 import PostCard from './PostCard';
-import { fetchPosts } from '../../services/api';
-import { Post } from "../../interfaces"
+import usePosts from '../../hooks/usePosts';
 
 const PostList = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const postsData = await fetchPosts();
-        setPosts(postsData.posts);
-      } catch (error:any) {
-        throw new Error(error);
-      }
-    };
-    loadPosts();
-  }, []);
+  const { posts } = usePosts();
 
   if (!posts) {
     return <div className="text-center">Posts not found.</div>;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
+import { Theme } from "../types/index"
 
-type Theme = 'light' | 'dark';
 
 const ThemeToggle = () => {
   const themeStorage = localStorage.getItem('theme') as Theme | null;
