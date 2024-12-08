@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --black: #000;
+  --white: #fff;
+}
+
 *,
 *::after,
 *::before {
@@ -10,14 +15,78 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-  background: #000;
-  color: #FFF;
+body[data-mode="dark"] {
+  background: var(--black);
+  color: var(--white);
 }
 
 body {
   font-family: 'Oswald', sans-serif;
+  scroll-behavior: smooth;
+  background: var(--white);
+  color: var(--black);
 }
+
+.icon--light svg,
+.icon--dark svg {
+  position: relative;
+  z-index: 1;
+}
+
+.icon--light:after {
+  background-color: var(--black);
+}
+
+.icon--light svg {
+  fill: var(--white);
+} 
+
+[data-mode="dark"] .icon--light:after {
+  background-color: transparent;
+}
+
+[data-mode="dark"] .icon--light svg {
+  fill: var(--white);
+}
+
+[data-mode="dark"] .icon--dark:after {
+  background-color: var(--white);
+}
+
+[data-mode="dark"] .icon--dark svg {
+  fill: var(--dark);
+}
+
+.icon--dark:after {
+  background-color: transparent;
+}
+
+.icon--dark svg {
+  fill: var(--dark);
+}
+
+.theme-toggle .icon--light:after,
+.theme-toggle .icon--dark:after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: calc(100% + 2px);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  transition: right .3s ease, background-color .3s ease;
+}
+
+[data-mode="dark"] .theme-toggle .icon--light:after,
+[data-mode="dark"] .theme-toggle .icon--dark:after {
+  right: 31px;
+  transition: right .3s ease, background-color .3s ease;
+}
+
+[data-mode="light"] .theme-toggle {
+  border-color: var(--black);
+}
+
 
