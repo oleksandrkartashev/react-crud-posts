@@ -1,1 +1,1 @@
-# react-ai-blog
+# react-small-blog
