@@ -48,7 +48,7 @@ const EditPost: React.FC<PostEditPopupProps> = ({ post, isOpen,  onClose, onSave
                 </div>
                 <div>
                     <label htmlFor="body" className="block mb-2 text-sm font-medium text-black dark:text-white">Body</label>
-                    <textarea name="body" id="body"  value={editedPost.body} onChange={handleChange} rows="4" className="block p-2.5 dark:bg-black w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-500 dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                    <textarea name="body" id="body"  value={editedPost.body} onChange={handleChange} rows={4} className="block p-2.5 dark:bg-black w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-500 dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                 </div>
               </form>
               </div>
