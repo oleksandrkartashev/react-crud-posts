@@ -8,7 +8,7 @@ const usePosts = () => {
   useEffect(() => {
     const savedPosts = localStorage.getItem('posts');
     
-    if (savedPosts) {
+    if (savedPosts?.length) {
       setPosts(JSON.parse(savedPosts));
     } else {
       const loadPosts = async () => {
@@ -35,11 +35,11 @@ const usePosts = () => {
   //   savePosts(updatedPosts);
   // }
 
-  // const editPost = (updatedPost: Post) => {
-  //   const updatedPosts = posts.map(post => post.id === updatedPost.id ? updatedPost : post);
-  //   setPosts(updatedPosts);
-  //   savePosts(updatedPosts);
-  // }
+  const editPost = (updatedPost: Post) => {
+    const updatedPosts = posts.map(post => post.id === updatedPost.id ? updatedPost : post);
+    setPosts(updatedPosts);
+    savePosts(updatedPosts);
+  }
 
   const deletePost = (postId: number) => {
     const updatedPosts = posts.filter( post => post.id !== postId);
@@ -50,7 +50,7 @@ const usePosts = () => {
   return {
     posts,
     // addPost,
-    // editPost,
+    editPost,
     deletePost,
   };
 }

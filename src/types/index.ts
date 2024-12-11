@@ -13,3 +13,10 @@ export interface PostResponse {
 }
 
 export type Theme = 'light' | 'dark';
+
+export interface PostEditPopupProps {
+  post: Post;
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (post: Post) => void;
+}
