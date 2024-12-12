@@ -20,3 +20,9 @@ export interface PostEditPopupProps {
   onClose: () => void;
   onSave: (post: Post) => void;
 }
+
+export interface PostAddPopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAddPost: (post: Post) => void;
+}

@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-body[data-mode="dark"] {
+body[data-mode='dark'] {
   background: var(--black);
   color: var(--white);
 }
@@ -39,21 +39,21 @@ body {
 
 .icon--light svg {
   fill: var(--white);
-} 
+}
 
-[data-mode="dark"] .icon--light:after {
+[data-mode='dark'] .icon--light:after {
   background-color: transparent;
 }
 
-[data-mode="dark"] .icon--light svg {
+[data-mode='dark'] .icon--light svg {
   fill: var(--white);
 }
 
-[data-mode="dark"] .icon--dark:after {
+[data-mode='dark'] .icon--dark:after {
   background-color: var(--white);
 }
 
-[data-mode="dark"] .icon--dark svg {
+[data-mode='dark'] .icon--dark svg {
   fill: var(--dark);
 }
 
@@ -76,17 +76,19 @@ body {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  transition: right .3s ease, background-color .3s ease;
+  transition:
+    right 0.3s ease,
+    background-color 0.3s ease;
 }
 
-[data-mode="dark"] .theme-toggle .icon--light:after,
-[data-mode="dark"] .theme-toggle .icon--dark:after {
+[data-mode='dark'] .theme-toggle .icon--light:after,
+[data-mode='dark'] .theme-toggle .icon--dark:after {
   right: 31px;
-  transition: right .3s ease, background-color .3s ease;
+  transition:
+    right 0.3s ease,
+    background-color 0.3s ease;
 }
 
-[data-mode="light"] .theme-toggle {
+[data-mode='light'] .theme-toggle {
   border-color: var(--black);
 }
-
-

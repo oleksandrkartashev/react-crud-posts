@@ -8,18 +8,17 @@ import PostPage from './pages/PostPage';
 const App = () => {
   return (
     <>
-    <div className="flex flex-col min-h-screen">
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/post/:id" element={<PostPage />} />
-      </Routes>
-      <Footer />
-    </Router>
-    </div>
+      <div className="flex flex-col min-h-screen">
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/post/:id" element={<PostPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
     </>
-   
   );
 };
 

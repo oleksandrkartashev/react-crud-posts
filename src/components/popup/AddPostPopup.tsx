@@ -1,32 +1,37 @@
-import { useEffect, useState } from 'react';
-import { Post } from '../../types';
-import { PostEditPopupProps } from '../../types';
+import { useState } from 'react';
+import { PostAddPopupProps } from '../../types';
+import usePosts from '../../hooks/usePosts';
 
-const EditPost: React.FC<PostEditPopupProps> = ({
-  post,
+const AddPost: React.FC<PostAddPopupProps> = ({
   isOpen,
   onClose,
-  onSave,
+  onAddPost,
 }) => {
-  const [editedPost, setEditedPost] = useState<Post>({ ...post });
+  const [title, setTitle] = useState<string>('');
+  const [body, setBody] = useState<string>('');
+  const { posts } = usePosts();
 
-  useEffect(() => {
-    setEditedPost({ ...post });
-  }, [post]);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setEditedPost((prevPost) => ({
-      ...prevPost,
-      [name]: value,
-    }));
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
   };
 
-  const handleSave = () => {
-    onSave(editedPost);
-    onClose();
+  const handleBodyChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (title && body) {
+      const post = {
+        id: posts.length + 1,
+        title,
+        body,
+        views: Math.floor(Math.random() * 101),
+        reactions: {},
+        tags: [''],
+        userId: Math.floor(Math.random() * 98) + 2,
+      };
+      onAddPost(post);
+    }
   };
 
   const popupVisibleClass = !isOpen ? 'hidden' : 'flex';
@@ -80,8 +85,8 @@ const EditPost: React.FC<PostEditPopupProps> = ({
                     type="text"
                     name="title"
                     id="title"
-                    value={editedPost.title}
-                    onChange={handleChange}
+                    value={title}
+                    onChange={handleTitleChange}
                     className="bg-gray-50 dark:bg-black border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-white dark:text-white"
                   />
                 </div>
@@ -95,8 +100,8 @@ const EditPost: React.FC<PostEditPopupProps> = ({
                   <textarea
                     name="body"
                     id="body"
-                    value={editedPost.body}
-                    onChange={handleChange}
+                    value={body}
+                    onChange={handleBodyChange}
                     rows={4}
                     className="block p-2.5 dark:bg-black w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-500 dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   ></textarea>
@@ -106,7 +111,7 @@ const EditPost: React.FC<PostEditPopupProps> = ({
             <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
               <button
                 type="button"
-                onClick={handleSave}
+                onClick={handleSubmit}
                 className="bg-black dark:bg-white text-white dark:text-black leading-none min-w-[100px] px-3 py-2 mx-2"
               >
                 Accept
@@ -126,4 +131,4 @@ const EditPost: React.FC<PostEditPopupProps> = ({
   );
 };
 
-export default EditPost;
+export default AddPost;
