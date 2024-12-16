@@ -26,3 +26,17 @@ export interface PostAddPopupProps {
   onClose: () => void;
   onAddPost: (post: Post) => void;
 }
+
+export interface EditPostFormProps {
+  editedPost: Post;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+}
+
+export interface AddPostFormProps {
+  title: string;
+  body: string;
+  onTitleChange: React.ChangeEventHandler<HTMLInputElement>;
+  onBodyChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+}

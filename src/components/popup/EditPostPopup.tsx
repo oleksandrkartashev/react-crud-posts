@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../../types';
 import { PostEditPopupProps } from '../../types';
+import FormEditPost from '../form/FormEditPost';
 
 const EditPost: React.FC<PostEditPopupProps> = ({
   post,
@@ -9,6 +10,7 @@ const EditPost: React.FC<PostEditPopupProps> = ({
   onSave,
 }) => {
   const [editedPost, setEditedPost] = useState<Post>({ ...post });
+  const popupVisibleClass = !isOpen ? 'hidden' : 'flex';
 
   useEffect(() => {
     setEditedPost({ ...post });
@@ -18,7 +20,7 @@ const EditPost: React.FC<PostEditPopupProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setEditedPost((prevPost) => ({
+    setEditedPost((prevPost: Post) => ({
       ...prevPost,
       [name]: value,
     }));
@@ -28,8 +30,6 @@ const EditPost: React.FC<PostEditPopupProps> = ({
     onSave(editedPost);
     onClose();
   };
-
-  const popupVisibleClass = !isOpen ? 'hidden' : 'flex';
 
   return (
     <>
@@ -68,40 +68,7 @@ const EditPost: React.FC<PostEditPopupProps> = ({
               </button>
             </div>
             <div className="p-4 md:p-5 space-y-4">
-              <form className="space-y-4" action="#">
-                <div>
-                  <label
-                    htmlFor="title"
-                    className="block mb-2 text-sm font-medium text-black dark:text-white"
-                  >
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    value={editedPost.title}
-                    onChange={handleChange}
-                    className="bg-gray-50 dark:bg-black border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-white dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="body"
-                    className="block mb-2 text-sm font-medium text-black dark:text-white"
-                  >
-                    Body
-                  </label>
-                  <textarea
-                    name="body"
-                    id="body"
-                    value={editedPost.body}
-                    onChange={handleChange}
-                    rows={4}
-                    className="block p-2.5 dark:bg-black w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-500 dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  ></textarea>
-                </div>
-              </form>
+              <FormEditPost editedPost={editedPost} onChange={handleChange} />
             </div>
             <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
               <button
