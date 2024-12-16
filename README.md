@@ -1,1 +1,1 @@
-# react-small-blog
+# react-crud-posts
