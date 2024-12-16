@@ -46,7 +46,7 @@ const AddPost: React.FC<PostAddPopupProps> = ({
           <div className="relative bg-white rounded-lg shadow dark:bg-black">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray dark:border-white">
               <h3 className="text-xl font-semibold text-black dark:text-white">
-                Edit Post
+                Add Post
               </h3>
               <button
                 onClick={onClose}
